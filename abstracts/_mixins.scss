@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as v;
+@use 'sass:map';
+
+
+$map-min-width-mixin: v.$map-min-width;
+$map-max-width-mixin: v.$map-max-width;
+
+
+@mixin set-container($breakpoint: '') {
+    // Kiểm tra nếu có tồn tại key trong map, trả về true, ngược lại trả về false
+    @if map.has-key($map-max-width-mixin, $breakpoint) {
+        $min: map.get($map-min-width-mixin, $breakpoint);
+        @media (min-width: $min) {
+            .container-#{$breakpoint} {
+                // Lấy giá trị của key 
+                max-width: map.get($map-max-width-mixin, $breakpoint);
+                // display: grid;
+                // grid-template-columns: repeat(12, auto);
+                margin: 0 auto;
+                // gap: 24px;
+            }
+        }
+    }
+    @else {
+        $breakpoint: 'sm';
+        $min: map.get($map-min-width-mixin, $breakpoint);
+
+        @media (min-width: $min) {
+            .container{
+                // Lấy giá trị của key 
+                max-width: map.get($map-max-width-mixin, $breakpoint);
+                // display: grid;
+                // grid-template-columns: repeat(12, auto);
+                margin: 0 auto;
+                // gap: 24px;
+            }
+        }
+    }
+}

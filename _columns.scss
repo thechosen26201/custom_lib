@@ -3,7 +3,7 @@
 }
 .d-g {
     display: grid;
-    grid-template-columns: (12, auto);
+    grid-template-columns: repeat(12, auto);
 }
 .container {
     margin: 0 auto;

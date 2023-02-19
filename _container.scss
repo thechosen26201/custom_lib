@@ -1,0 +1,10 @@
+@use 'abstracts/' as a;
+@use 'sass:map';
+
+$list_key_names: map.keys(a.$map-max-width);
+
+@each $item in $list_key_names {    
+    @include a.set-container($item);
+}
+
+// @include a.set-container('');
